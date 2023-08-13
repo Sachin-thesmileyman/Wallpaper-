@@ -1,0 +1,24 @@
+from PIL import Image, ImageDraw
+
+# Dimensions of the wallpaper
+width = 1920  # Adjust as needed
+height = 1080  # Adjust as needed
+
+# Create a new image with a white background
+wallpaper = Image.new('RGB', (width, height), 'white')
+
+# Create a drawing object
+draw = ImageDraw.Draw(wallpaper)
+
+# Define gradient colors
+colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255)]  # Red, Green, Blue
+
+# Draw the gradient
+for i in range(height):
+    r, g, b = colors[i % len(colors)]
+    draw.line((0, i, width, i), fill=(r, g, b))
+
+# Save the wallpaper
+wallpaper.save('colorful_wallpaper.png')
+
+print('Colorful wallpaper generated!')
